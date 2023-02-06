@@ -24,7 +24,11 @@
     import { Task } from '../models/task.model'
     import { useTaskStore } from '../store/taskStore'
 
-    const { task } = defineProps<{ task: Task}>()
+    interface Props {
+        task: Task 
+    }
+
+    const { task } = defineProps<Props>()
 
     const taskStore = useTaskStore()
 </script>
