@@ -2,9 +2,10 @@
   import { ref } from 'vue'
   import { useTaskStore } from './store/taskStore'
   import TaskDetails from './components/TaskDetails.vue'
+  import TaskForm from './components/TaskForm.vue'
 
   export default {
-    components: { TaskDetails },
+    components: { TaskDetails, TaskForm },
     setup() {
       const taskStore = useTaskStore()
 
@@ -21,9 +22,13 @@
     <h1>Tasks</h1>
   </header>
 
+  <section class="new-task-form">
+    <TaskForm />
+  </section>
+
   <nav class="filters">
-    <button @click="filterTasks === 'all'">All Tasks</button>
-    <button @click="filterTasks === 'favs'">Fav Tasks</button>
+    <button @click="filterTasks = 'all'">All Tasks</button>
+    <button @click="filterTasks = 'favs'">Fav Tasks</button>
   </nav>
 
   <div class="task__list" v-if="filterTasks === 'all'">
@@ -85,6 +90,11 @@
     padding: 4px 8px;
     cursor: pointer;
     font-size: 0.8em;
+  }
+
+  .new-task-form {
+    background: #e7e7e7;
+    padding: 20px 0;
   }
 
 </style>
