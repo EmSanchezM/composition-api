@@ -5,51 +5,45 @@
     </form>
 </template>
 
-<script lang="ts">
-    import { ref } from 'vue'
-    import { useTaskStore } from '../store/taskStore'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useTaskStore } from '../store/taskStore'
 
-    export default {
-        setup() {
-            const taskStore = useTaskStore()
+const taskStore = useTaskStore()
 
-            const newTask = ref('')
+const newTask = ref('')
 
-            const handleSubmit = () => {
-                if(newTask.value.length > 0) {
-                    taskStore.addTask({
-                        title: newTask.value,
-                        isFav: false,
-                        id: Math.floor(Math.random() * 1000000)
-                    })
-                }
-                newTask.value = ''
-            }
-
-            return {
-                newTask,
-                handleSubmit
-            }
-        }
+const handleSubmit = () => {
+    if (newTask.value.length > 0) {
+        taskStore.addTask({
+            title: newTask.value,
+            isFav: false,
+            id: Math.floor(Math.random() * 1000000)
+        })
     }
+    newTask.value = ''
+}
+
 </script>
 
 <style scoped>
- form {
+form {
     max-width: 400px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 10px;
- }
- input {
+}
+
+input {
     border: 0;
     padding: 10px;
     border-radius: 6px;
     color: #555;
     font-size: 1em;
- }
- button {
+}
+
+button {
     background: #ffd859;
     border: 0;
     padding: 10px;
@@ -57,5 +51,5 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 1em;
- }
+}
 </style>

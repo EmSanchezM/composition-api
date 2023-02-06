@@ -1,19 +1,13 @@
-<script lang="ts">
+<script setup lang="ts">
   import { ref } from 'vue'
   import { useTaskStore } from './store/taskStore'
   import TaskDetails from './components/TaskDetails.vue'
   import TaskForm from './components/TaskForm.vue'
 
-  export default {
-    components: { TaskDetails, TaskForm },
-    setup() {
-      const taskStore = useTaskStore()
+  const taskStore = useTaskStore()
 
-      const filterTasks = ref('all')
+  const filterTasks = ref('all')
 
-      return { taskStore, filterTasks }
-    }
-  }
 </script>
 
 <template>

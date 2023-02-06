@@ -19,18 +19,14 @@
     </article>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+    import { defineProps } from 'vue'
+    import { Task } from '../models/task.model'
     import { useTaskStore } from '../store/taskStore'
 
-    export default {
-        props: ['task'],
+    const { task } = defineProps<{ task: Task}>()
 
-        setup() {
-            const taskStore = useTaskStore()
-
-            return { taskStore }
-        }
-    }
+    const taskStore = useTaskStore()
 </script>
 
 <style scoped>
